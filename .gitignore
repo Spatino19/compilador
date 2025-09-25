@@ -1,0 +1,25 @@
+# Archivos compilados de Java
+*.class
+
+# Directorios de compilación comunes
+/bin/
+/out/
+/build/
+
+# Archivos de configuración de IDE
+*.iml
+*.ipr
+*.iws
+.idea/
+.vscode/
+
+# Archivos temporales de sistema
+*.log
+*.tmp
+*.swp
+.DS_Store
+Thumbs.db
+
+# Archivos generados por Maven/Gradle (si los usaras en el futuro)
+target/
+.gradle/
