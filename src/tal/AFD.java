@@ -26,7 +26,7 @@ private void inicio()
     if(isDigitChar())
         state(this::intval);
     else if (isChar('e'))
-        state(this::entero);
+        state(() -> PalabraEntero.e(this));
     else if(isSpaceChar())
         restart();
     else if(isEofChar())
@@ -42,57 +42,58 @@ private void id() {
         token(ID);
 }
 
+private static class PalabraEntero {
+    static void e(AFD afd) {
+        if (afd.isChar('n'))
+            afd.state(() -> n(afd));
+        else if (afd.isIdChar())
+            afd.state(afd::id);
+        else
+            afd.token(ID);
+    }
 
-private void entero() {
-    if(isChar('n'))
-        state(this::entero2);
-    else if(isIdChar())
-        state(this::id);
-    else
-        token(ID);
-}
+    static void n(AFD afd) {
+        if (afd.isChar('t'))
+            afd.state(() -> t(afd));
+        else if (afd.isIdChar())
+            afd.state(afd::id);
+        else
+            afd.token(ID);
+    }
 
-private void entero2() {
-    if(isChar('t'))
-        state(this::entero3);
-    else if(isIdChar())
-        state(this::id);
-    else
-        token(ID);
-}
+    static void t(AFD afd) {
+        if (afd.isChar('e'))
+            afd.state(() -> e2(afd));
+        else if (afd.isIdChar())
+            afd.state(afd::id);
+        else
+            afd.token(ID);
+    }
 
-private void entero3() {
-    if(isChar('e'))
-        state(this::entero4);
-    else if(isIdChar())
-        state(this::id);
-    else
-        token(ID);
-}
+    static void e2(AFD afd) {
+        if (afd.isChar('r'))
+            afd.state(() -> r(afd));
+        else if (afd.isIdChar())
+            afd.state(afd::id);
+        else
+            afd.token(ID);
+    }
 
-private void entero4() {
-    if(isChar('r'))
-        state(this::entero5);
-    else if(isIdChar())
-        state(this::id);
-    else
-        token(ID);
-}
+    static void r(AFD afd) {
+        if (afd.isChar('o'))
+            afd.state(() -> fin(afd));
+        else if (afd.isIdChar())
+            afd.state(afd::id);
+        else
+            afd.token(ID);
+    }
 
-private void entero5() {
-    if(isChar('o'))
-        state(this::entero6);
-    else if(isIdChar())
-        state(this::id);
-    else
-        token(ID);
-}
-
-private void entero6() {
-    if(isIdChar())
-        state(this::id);
-    else
-        token(ENTERO);
+    static void fin(AFD afd) {
+        if (afd.isIdChar())
+            afd.state(afd::id);
+        else
+            afd.token(ENTERO);
+    }
 }
 
 private void intval()
