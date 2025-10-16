@@ -14,7 +14,7 @@ public final class Entero {
             afd.token(ID);
     }
 
-    private static void n(AFD afd) {
+    static void n(AFD afd) {
         if (afd.isChar('t'))
             afd.state(() -> t(afd));
         else if (afd.isIdChar())
@@ -23,16 +23,18 @@ public final class Entero {
             afd.token(ID);
     }
 
-    private static void t(AFD afd) {
+    static void t(AFD afd) {
         if (afd.isChar('e'))
             afd.state(() -> e2(afd));
+        else if (afd.isChar('o'))
+            afd.state(() -> Entonces.o(afd));
         else if (afd.isIdChar())
             afd.state(afd::id);
         else
             afd.token(ID);
     }
 
-    private static void e2(AFD afd) {
+    static void e2(AFD afd) {
         if (afd.isChar('r'))
             afd.state(() -> r(afd));
         else if (afd.isIdChar())
@@ -41,7 +43,7 @@ public final class Entero {
             afd.token(ID);
     }
 
-    private static void r(AFD afd) {
+    static void r(AFD afd) {
         if (afd.isChar('o'))
             afd.state(() -> fin(afd));
         else if (afd.isIdChar())
@@ -50,7 +52,7 @@ public final class Entero {
             afd.token(ID);
     }
 
-    private static void fin(AFD afd) {
+    static void fin(AFD afd) {
         if (afd.isIdChar())
             afd.state(afd::id);
         else
