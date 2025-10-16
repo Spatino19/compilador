@@ -17,3 +17,6 @@ enton
 entonc
 entonce
 entonces
+
+s
+si

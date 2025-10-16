@@ -30,6 +30,8 @@ private void inicio()
         state(this::intval);
     else if (isChar('e'))
         state(() -> Entero.e(this));
+    else if (isChar('s'))
+        state(() -> Si.s(this));
     else if(isSpaceChar())
         restart();
     else if(isEofChar())
