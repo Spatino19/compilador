@@ -1,6 +1,9 @@
 package tal;
 
 import java.io.*;
+
+import tal.palabras.Entero;
+
 import static tal.Token.Type.*;
 
 /**
@@ -26,7 +29,7 @@ private void inicio()
     if(isDigitChar())
         state(this::intval);
     else if (isChar('e'))
-        state(() -> PalabraEntero.e(this));
+        state(() -> Entero.e(this));
     else if(isSpaceChar())
         restart();
     else if(isEofChar())
@@ -35,65 +38,11 @@ private void inicio()
         error();
 }
 
-private void id() {
+public void id() {
     if (isIdChar())
         state(this::id);
     else
         token(ID);
-}
-
-private static class PalabraEntero {
-    static void e(AFD afd) {
-        if (afd.isChar('n'))
-            afd.state(() -> n(afd));
-        else if (afd.isIdChar())
-            afd.state(afd::id);
-        else
-            afd.token(ID);
-    }
-
-    static void n(AFD afd) {
-        if (afd.isChar('t'))
-            afd.state(() -> t(afd));
-        else if (afd.isIdChar())
-            afd.state(afd::id);
-        else
-            afd.token(ID);
-    }
-
-    static void t(AFD afd) {
-        if (afd.isChar('e'))
-            afd.state(() -> e2(afd));
-        else if (afd.isIdChar())
-            afd.state(afd::id);
-        else
-            afd.token(ID);
-    }
-
-    static void e2(AFD afd) {
-        if (afd.isChar('r'))
-            afd.state(() -> r(afd));
-        else if (afd.isIdChar())
-            afd.state(afd::id);
-        else
-            afd.token(ID);
-    }
-
-    static void r(AFD afd) {
-        if (afd.isChar('o'))
-            afd.state(() -> fin(afd));
-        else if (afd.isIdChar())
-            afd.state(afd::id);
-        else
-            afd.token(ID);
-    }
-
-    static void fin(AFD afd) {
-        if (afd.isIdChar())
-            afd.state(afd::id);
-        else
-            afd.token(ENTERO);
-    }
 }
 
 private void intval()
