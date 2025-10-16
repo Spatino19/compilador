@@ -2,12 +2,55 @@
 8 9
 10
 
+
+
+c
+ca
+cad
+cade
+caden
+cadena
+
+
+s
+si
+sin
+sino
+
 e
 en
 ent
 ente
 enter
 entero
+
+mi
+mie
+mien
+mient
+mientr
+mientras
+
+
+
+fi
+fin
+
+
+im
+imp
+impr
+impri
+imprim
+imprimi
+imprimir
+
+it
+ite
+iter
+itera
+iterar
+
 
 e
 en
@@ -20,3 +63,4 @@ entonces
 
 s
 si
+
