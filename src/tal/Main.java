@@ -17,7 +17,7 @@ public static void main(String args[]) throws IOException
     }
 
     leerTokens(args[0]);
-    compilar(args[0]);
+    // compilar(args[0]);
 }
 
 //------------------------------------------------------------------------

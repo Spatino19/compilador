@@ -25,12 +25,74 @@ private void inicio()
 {
     if(isDigitChar())
         state(this::intval);
+    else if (isChar('e'))
+        state(this::entero);
     else if(isSpaceChar())
         restart();
     else if(isEofChar())
         token(EOF);
     else
         error();
+}
+
+private void id() {
+    if (isIdChar())
+        state(this::id);
+    else
+        token(ID);
+}
+
+
+private void entero() {
+    if(isChar('n'))
+        state(this::entero2);
+    else if(isIdChar())
+        state(this::id);
+    else
+        token(ID);
+}
+
+private void entero2() {
+    if(isChar('t'))
+        state(this::entero3);
+    else if(isIdChar())
+        state(this::id);
+    else
+        token(ID);
+}
+
+private void entero3() {
+    if(isChar('e'))
+        state(this::entero4);
+    else if(isIdChar())
+        state(this::id);
+    else
+        token(ID);
+}
+
+private void entero4() {
+    if(isChar('r'))
+        state(this::entero5);
+    else if(isIdChar())
+        state(this::id);
+    else
+        token(ID);
+}
+
+private void entero5() {
+    if(isChar('o'))
+        state(this::entero6);
+    else if(isIdChar())
+        state(this::id);
+    else
+        token(ID);
+}
+
+private void entero6() {
+    if(isIdChar())
+        state(this::id);
+    else
+        token(ENTERO);
 }
 
 private void intval()
