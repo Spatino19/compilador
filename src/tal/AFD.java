@@ -2,7 +2,7 @@ package tal;
 
 import java.io.*;
 
-import tal.palabras.Entero;
+import tal.palabras.*;
 
 import static tal.Token.Type.*;
 
