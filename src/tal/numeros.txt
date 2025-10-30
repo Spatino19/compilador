@@ -76,3 +76,5 @@ si
 -
 *
 /
+si (holaaaa + dos)
+    entonces agua = "no"

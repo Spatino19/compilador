@@ -51,6 +51,12 @@ public class AFD extends ALex {
             state(() -> token(SUM));
         else if (isChar('*') || isChar('/')) //TODO: Añadir automata para comentarios
             state(() -> token(MUL));
+        else if (isChar('!'))
+            state((() -> token(NEG)));
+        else if (isChar('('))
+            state(() -> token(IPAR));
+        else if (isChar(')'))
+            state(() -> token(DPAR));
         else if (isIdChar())
             state(this::id);
         else if (isSpaceChar())
