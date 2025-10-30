@@ -39,7 +39,8 @@ public class AFD extends ALex {
             state(() -> Fin.f(this));
         else if (isChar('i'))
             state(() -> Imprimir.i(this));
-
+        else if (isChar('='))
+            state(() -> Asign.asign(this));
         else if (isSpaceChar())
             restart();
         else if (isChar('"'))
