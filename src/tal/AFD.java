@@ -27,6 +27,8 @@ public class AFD extends ALex {
     private void inicio() {
         if (isDigitChar())
             state(this::intval);
+        else if (isIdChar())
+            state(this::id);
         else if (isChar('e'))
             state(() -> Entero.e(this));
         else if (isChar('c'))
@@ -52,7 +54,7 @@ public class AFD extends ALex {
         else if (isEofChar())
             token(EOF);
         else
-            error();
+            error();    
     }
 
     public void id() {
