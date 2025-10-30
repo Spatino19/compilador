@@ -51,6 +51,8 @@ public class AFD extends ALex {
             restart();
         else if (isChar('"'))
             stateNoChar(this::strVal);
+        else if (isChar('+') || isChar('-'))
+            state(() -> token(SUM));
         else if (isEofChar())
             token(EOF);
         else
