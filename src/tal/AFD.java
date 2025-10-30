@@ -27,8 +27,6 @@ public class AFD extends ALex {
     private void inicio() {
         if (isDigitChar())
             state(this::intval);
-        else if (isIdChar())
-            state(this::id);
         else if (isChar('e'))
             state(() -> Entero.e(this));
         else if (isChar('c'))
@@ -53,6 +51,8 @@ public class AFD extends ALex {
             state(() -> token(SUM));
         else if (isChar('*') || isChar('/')) //TODO: Añadir automata para comentarios
             state(() -> token(MUL));
+        else if (isIdChar())
+            state(this::id);
         else if (isSpaceChar())
             restart();
         else if (isEofChar())
