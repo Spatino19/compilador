@@ -47,12 +47,12 @@ public class AFD extends ALex {
             state((() -> Rel.menor(this)));
         else if (isChar('>'))
             state((() -> Rel.mayor(this)));
-        else if (isSpaceChar())
-            restart();
         else if (isChar('"'))
             stateNoChar(this::strVal);
         else if (isChar('+') || isChar('-'))
             state(() -> token(SUM));
+        else if (isSpaceChar())
+            restart();
         else if (isEofChar())
             token(EOF);
         else
