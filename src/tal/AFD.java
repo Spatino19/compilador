@@ -42,6 +42,8 @@ public class AFD extends ALex {
 
         else if (isSpaceChar())
             restart();
+        else if (isChar('"'))
+            stateNoChar(this::strVal);
         else if (isEofChar())
             token(EOF);
         else
@@ -62,6 +64,15 @@ public class AFD extends ALex {
             error();
         else
             token(INTVAL);
+    }
+
+    private void strVal() {
+        if (isChar('"'))
+            stateNoChar(() -> token(STRVAL));
+        else if (isEofChar())
+            error();
+        else
+            state(this::strVal);
     }
 
 } // AFD
