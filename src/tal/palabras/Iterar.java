@@ -14,7 +14,7 @@ public final class Iterar {
             afd.token(ID);
     }
 
-    private static void t(AFD afd) {
+    public static void t(AFD afd) {
         if (afd.isChar('e'))
             afd.state(() -> e(afd));
         else if (afd.isIdChar())

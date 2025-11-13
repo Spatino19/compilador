@@ -24,6 +24,7 @@ ente
 enter
 entero
 
+m
 mi
 mie
 mien
@@ -32,11 +33,11 @@ mientr
 mientras
 
 
-
+f
 fi
 fin
 
-
+i
 im
 imp
 impr
@@ -45,6 +46,7 @@ imprim
 imprimi
 imprimir
 
+i
 it
 ite
 iter

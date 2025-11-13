@@ -8,6 +8,8 @@ public final class Imprimir {
     public static void i(AFD afd) {
         if (afd.isChar('m'))
             afd.state(() -> m(afd));
+        else if (afd.isChar('t'))
+            afd.state(() -> Iterar.t(afd));
         else if (afd.isIdChar())
             afd.state(afd::id);
         else
