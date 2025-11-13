@@ -59,6 +59,10 @@ public class AFD extends ALex {
             state(() -> token(IPAR));
         else if (isChar(')'))
             state(() -> token(DPAR));
+        else if (isChar('&'))
+            state(this::and);
+        else if (isChar('|'))
+            state(this::or);
         else if (isIdChar())
             state(this::id);
         else if (isSpaceChar())
@@ -99,6 +103,20 @@ public class AFD extends ALex {
             error();
         else
             token(MUL);
+    }
+
+    private void and() {
+        if (isChar('&'))
+            state(() -> token(AND));
+        else
+            error();
+    }
+
+    private void or() {
+        if (isChar('|'))
+            state(() -> token(OR));
+        else
+            error();
     }
 
 } // AFD

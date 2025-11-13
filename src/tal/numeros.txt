@@ -85,3 +85,7 @@ si (holaaaa + dos)
     /* miau 
     como estasss si
     entonces */
+
+
+&&
+||
