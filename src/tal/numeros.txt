@@ -80,3 +80,8 @@ si
 /
 si (holaaaa + dos)
     entonces agua = "no"
+
+    //hola!
+    /* miau 
+    como estasss si
+    entonces */

@@ -49,8 +49,10 @@ public class AFD extends ALex {
             stateNoChar(this::strVal);
         else if (isChar('+') || isChar('-'))
             state(() -> token(SUM));
-        else if (isChar('*') || isChar('/')) //TODO: Añadir automata para comentarios
-            state(() -> token(MUL));
+        else if (isChar('*'))
+            state(this::asterisco);
+        else if (isChar('/'))
+            state(() -> Comentario.diagonal(this));
         else if (isChar('!'))
             state((() -> token(NEG)));
         else if (isChar('('))
@@ -90,6 +92,13 @@ public class AFD extends ALex {
             error();
         else
             state(this::strVal);
+    }
+
+    private void asterisco() {
+        if (isChar('/'))
+            error();
+        else
+            token(MUL);
     }
 
 } // AFD
