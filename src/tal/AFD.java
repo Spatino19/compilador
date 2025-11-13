@@ -100,7 +100,7 @@ public class AFD extends ALex {
 
     private void asterisco() {
         if (isChar('/'))
-            error();
+            restart();
         else
             token(MUL);
     }

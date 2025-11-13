@@ -35,7 +35,7 @@ public final class Comentario {
 
     private static void finBloque(AFD afd) {
         if (afd.isChar('/'))
-            afd.stateNoChar(afd::restart);
+            afd.restart();
         else if (afd.isChar('*'))
             afd.stateNoChar(() -> finBloque(afd));
         else
