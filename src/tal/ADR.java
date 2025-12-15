@@ -216,6 +216,13 @@ public class ADR extends ASin {
             tokenRead(NEG);
             unaria();
             codeOperator("!");
+        } else if (tokenType() == SUM) {
+            String op = tokenName();
+            tokenRead(SUM);
+            unaria();
+            if ("-".equals(op)) {
+                codeOperator("-1");
+            }
         } else {
             primaria();
         }
